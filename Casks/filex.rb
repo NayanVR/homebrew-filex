@@ -1,6 +1,6 @@
 cask "filex" do
-  version "0.3.0"
-  sha256 "a86beeadbf3c6acb34cf4c15d037bb63561fcf74dea224b79ae162d93053b237"
+  version "0.3.1"
+  sha256 "c6e18a31158d67517a29dfbdd49700021476ae93478dc4c22dce382097bbddb5"
 
   url "https://github.com/NayanVR/Filex/releases/download/v#{version}/filex-#{version}-macos.tar.gz"
   name "Filex"
@@ -8,4 +8,13 @@ cask "filex" do
   homepage "https://github.com/NayanVR/Filex"
 
   app "Filex.app"
+
+  # Quit the app before an upgrade; Homebrew reopens it afterwards. A
+  # running filex-indexd isn't stopped here: it notices its replaced binary
+  # and restarts itself (FIL-21).
+  uninstall quit: "dev.filex.app"
+
+  # Only on --zap. An uninstall launchctl: entry also runs on every upgrade and
+  # deletes the plist of the opt-in launch agent (packaging/launchd).
+  zap launchctl: "dev.filex.indexd"
 end
