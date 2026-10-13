@@ -1,6 +1,6 @@
 cask "filex" do
-  version "0.3.1"
-  sha256 "c6e18a31158d67517a29dfbdd49700021476ae93478dc4c22dce382097bbddb5"
+  version "0.3.2"
+  sha256 "a677d03185c207c17617cdf0164641f40ea6991193e852d272081bf130689a95"
 
   url "https://github.com/NayanVR/Filex/releases/download/v#{version}/filex-#{version}-macos.tar.gz"
   name "Filex"
